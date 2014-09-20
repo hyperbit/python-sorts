@@ -13,10 +13,23 @@ def generateArray(numElements, minVal=0, maxVal=100):
 
 # O(n^2)
 def insertionSort(array):
-    for p in range(1,len(array)):
+    for p in range(1, len(array)):
         temp = array[p]
         j = p
         while j > 0 and temp < array[j-1]:
             array[j] = array[j-1]
             j -= 1
         array[j] = temp
+
+# O(n^3/2)
+def shellSort(array):
+    gap = len(array)/2
+    while gap > 0:
+        for i in range(gap, len(array)):
+            temp = array[i]
+            j = i
+            while j >= gap and temp < array[j-gap]:
+                array[j] = array[j-gap]
+                j -= gap
+            array[j] = temp
+        gap /= 2
